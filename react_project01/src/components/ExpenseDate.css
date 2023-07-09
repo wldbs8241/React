@@ -1,0 +1,68 @@
+.expense-date {
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(5, 4, 4, 0.25);
+    padding: 0.5rem;
+    margin: 1rem 0;
+    border-radius: 12px;
+    background-color: #37383b;
+    border: solid white;
+  }
+  
+.expense-date__month {
+    /* display: flex; */
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-flow: column-reverse;
+    justify-content: flex-start;
+    flex: 1;
+}
+.expense-date__year {
+    color: white;
+    text-align: center;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-flow: column-reverse;
+    justify-content: flex-start;
+    flex: 1;
+}
+.expense-date__day {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-flow: column-reverse;
+    justify-content: flex-start;
+    flex: 1;
+}
+  /* .expense-date {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #40005d;
+    border: 1px solid white;
+    padding: 0.5rem;
+    border-radius: 12px;
+  } */
+  
+  @media (min-width: 580px) {
+    .expense-date__year {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1;
+    }
+
+    .expense-date__day {
+      font-size: 1.25rem;
+      padding: 0.5rem 1.5rem;
+    }
+  }
