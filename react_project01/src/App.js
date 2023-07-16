@@ -28,10 +28,22 @@ function App(props) {
     date: new Date(2021, 2, 28),
   }
   ];
+  const numm = [1, 2, 3, 4];
   return (
     <div className='App'>
       <h2>let's get started !</h2>
       <p>This is also visible</p>
+      <div className="title">
+        {expenses.map((item, idx) => (
+          <div className="titlebox" key={item}>
+            {item.title}
+          </div>
+        ))}
+        
+        {numm.map((num, idx) => (
+          <div>{num}</div>
+        ))}
+      </div>
       {/* 여기서 정의한 변수를 활용하기 때문에 props안붙여도됨 */}
       <Expenses items={expenses}></Expenses>
     </div>

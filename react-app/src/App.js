@@ -11,7 +11,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      mode: 'welcome',
+      mode: 'read',
+      selected_content_id :2,
       subject: {title:'web', sub:'world wide web!!'},
       welcome:{title:'welcome', desc: 'Hello, React-!'},
       contents: [
@@ -25,30 +26,44 @@ class App extends Component {
   render() {
     console.log('render');
     var _title, _desc = null;
+    // 초기 welcome message
     if(this.state.mode === 'welcome'){
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
     }else if (this.state.mode === 'read'){
-      _title = this.state.contents[0].title;
-      _desc = this.state.contents[0].desc;
+      var i = 0;
+      while(i< this.state.contents.length){
+        var data = this.state.contents[i];
+        if(data.id === this.state.selected_content_id){
+          // 그냥 변수명인가???  
+          _title = data.title;
+          _desc = data.desc;
+            break;
+          }
+        i=i+1;
+      }
+      
     }
     return (
       <div className="App">
-        {/* <Subject 
+        {/* 방법1 */}
+        <Subject 
         title={this.state.subject.title} 
-        sub={this.state.subject.sub}>
-        </Subject> */}
-        <header>
-        <h1><a href="/" onClick={function(e){
-            console.log(e);
-            e.preventDefault();
+        sub={this.state.subject.sub}
+        onChangePage={function(){
+          // alert("메세지가 변경되었습니다. 🐯");
+          this.setState({mode: 'welcome'});
+        }.bind(this)}>
+        </Subject>
+        <TOC 
+          onChangePage={function(id){
             this.setState({
-                mode: 'read'
+              mode: 'read',
+              selected_content_id : Number(id)
             });
-        }.bind(this)}>{this.state.subject.title}</a></h1>
-        {this.state.subject.sub}
-      </header>
-        <TOC data={this.state.contents}></TOC>
+          }.bind(this)}
+          data={this.state.contents}
+        ></TOC>
         <Content title={_title} desc={_desc}></Content>
       </div>
     );
